@@ -24,3 +24,8 @@ done
 
 cp -Rf figuras $dir
 cd -
+
+# Install packages
+for package in pandoc-beamer-block pandoc-include pandoc-latex-fontsize; do
+    pip install $package || (echo "Error installing package '$package' with pip"; exit)
+done
