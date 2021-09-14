@@ -1,0 +1,22 @@
+\usepackage[export]{adjustbox}
+\usepackage[margin=5em]{geometry}
+\usepackage{fancyhdr}\pagestyle{fancy}\lhead{Apuntes del Tema 1: Programación en C++ - Fundamentos}\rhead{Curso 2021/2022}
+\usepackage{hyperref}\hypersetup{pdfborder={0 0 0},colorlinks,linkcolor=blue,urlcolor=blue}
+\newenvironment{columns}{}{}
+\newenvironment{column}[1]{
+\let\oldwidth\textwidth
+\setlength{\textwidth}{#1}
+}
+{
+\setlength{\textwidth}{\oldwidth}
+}
+\newenvironment{block}[1]{}{}
+\lstset{language=c++,morecomment=[l]{//},morecomment=[s]{/*}{*/},
+ literate=%
+ {á}{{\'a}}1
+ {é}{{\'e}}1
+ {í}{{\'i}}1
+ {ó}{{\'o}}1
+ {ú}{{\'u}}1
+ {ñ}{{\'n}}1
+ , extendedchars=true, inputencoding=latin1, numbers=left,frame=single}

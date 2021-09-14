@@ -1,0 +1,173 @@
+% \ifx\handout\undefined
+% \documentclass[professionalfonts]{beamer}
+% \else
+% \documentclass[handout]{beamer}
+% \fi
+
+\mode<presentation>
+{
+   \usetheme{CambridgeUS}
+   \usecolortheme{crane}
+   % Remove navigation symbols
+   \setbeamertemplate{navigation symbols}{}
+   % Real transparent
+   % \setbeamercovered{transparent}
+   %\usecolortheme{whale}
+}
+%\usepackage{pgfpages}
+%\setbeameroption{show notes}
+
+\usepackage[spanish,english]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{ucs}
+%\usepackage[utf8x]{inputenc}
+%\usepackage{setspace}
+%\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{bytefield}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{color}
+\usepackage{verbatim} % Para usar \begin{comment} \end{comment}
+\usepackage[absolute,overlay]{textpos}
+\newcommand*\puttext[3]{  \begin{textblock}{10}(#1,#2) {#3}\end{textblock} }
+
+\usepackage{minted} % Para código minted
+\newminted{cpp}{fontsize=\small}
+
+\newcommand{\ccfile}[1]{\inputminted[linenos=true,frame=lines,numbersep=8pt,framesep=10mm,fontsize=\]{cpp}{./codigo/#1}}
+\newcommand{\ccfileex}[1]{\inputminted[linenos=true,frame=lines,xleftmargin=1cm,numbersep=8pt,framesep=1mm,fontsize=\footnotesize,firstline=5]{cpp}{./codigo/#1}}
+\newcommand{\ccfileexlast}[2]{\inputminted[linenos=true,frame=lines,xleftmargin=1em,numbersep=8pt,framesep=1mm,fontsize=\footnotesize,firstline=5,lastline=#1]{cpp}{./codigo/#2}}
+\newcommand{\ccfileexcont}[2]{\inputminted[linenos=true,frame=lines,xleftmargin=1em,numbersep=8pt,framesep=1mm,fontsize=\footnotesize,firstline=#1]{cpp}{./codigo/#2}}
+\newcommand{\ccfileexrange}[3]{\inputminted[linenos=true,frame=lines,xleftmargin=1em,numbersep=8pt,framesep=1mm,fontsize=\footnotesize,firstline=#1,lastline=#2]{cpp}{./codigo/#3}}
+%\newcommand{\cpplargefile}[1]{\inputminted[linenos=true,frame=lines,numbersep=8pt,framesep=10mm,fontsize=\scriptsisze]{cpp}{./codigo/#1}}
+
+\newmintedfile{cpp}{fontsize=\small}
+%Para tkiz
+\usepackage{tikz}
+\usepackage{pgf}
+\usetikzlibrary{shapes.arrows,chains}
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+\tikzstyle{highlight}=[red,ultra thick]
+
+
+\graphicspath{{../figuras/}{./figuras/}}
+%\usepackage{alltt}
+%\usepackage{floatflt}
+
+
+\usepackage{fancyvrb}
+\usepackage{relsize}
+%\usepackage{listings}
+
+% Contenido de hightlight.sty de la versión 2.4.8
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0,0,0}{#1}}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.16,0.16,1}{#1}}
+\newcommand{\hlesc}[1]{\textcolor[rgb]{1,0,1}{#1}}
+\newcommand{\hlstr}[1]{\textcolor[rgb]{1,0,0}{#1}}
+\newcommand{\hldstr}[1]{\textcolor[rgb]{0.51,0.51,0}{#1}}
+\newcommand{\hlslc}[1]{\textcolor[rgb]{0.51,0.51,0.51}{\it{#1}}}
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.51,0.51,0.51}{\it{#1}}}
+\newcommand{\hldir}[1]{\textcolor[rgb]{0,0.51,0}{#1}}
+\newcommand{\hlsym}[1]{\textcolor[rgb]{0,0,0}{#1}}
+\newcommand{\hlline}[1]{\textcolor[rgb]{0.33,0.33,0.33}{#1}}
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0,0,0}{\bf{#1}}}
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.51,0,0}{#1}}
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0,0,0}{\bf{#1}}}
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0,0,0.51}{#1}}
+\definecolor{bgcolor}{rgb}{1,1,1}
+
+\newcommand{\azul}[1]{\textcolor{blue}{#1}}
+\newcommand{\rojo}[1]{\textcolor[rgb]{0.51,0,0}{#1}}
+
+%Nuevos command que hacen falta por si se usa hightligh 3.1.2 (tomados de hightlight.sty)
+\newcommand{\hlpps}[1]{\textcolor[rgb]{0.51,0.51,0}{#1}}
+\newcommand{\hlppc}[1]{\textcolor[rgb]{0,0.51,0}{#1}}
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}
+\newcommand{\hllin}[1]{\textcolor[rgb]{0.33,0.33,0.33}{#1}}
+
+
+\makeatletter %only needed in preamble
+% El primer valor fija el tamaño de punto y el segundo el espacio
+% de las lineas
+\newcommand\codigoNormal{\@setfontsize\Large{8pt}{10}}
+\newcommand\codigoGrande{\@setfontsize\Large{10pt}{10}}
+\newcommand\codigoPeq{\@setfontsize\Large{7pt}{7}}
+\makeatother
+
+
+\newcommand{\codigo}[2]{
+    \vspace{0.2cm}
+    \begin{flushright}
+    \href{run:./codigo/#2}{\includegraphics[height=1cm]{gear_wheels}}
+    \end{flushright}
+    \vspace{-2cm}{\codigoNormal\input{./codigo/#1.tex}}
+}
+\newcommand{\codigazo}[2]{
+    \vspace{0.2cm}
+    \begin{flushright}
+%    \href{run:./codigo/#2}{\includegraphics[height=1cm]{gear_wheels}}
+    \end{flushright}
+    \vspace{-2cm}{\codigoGrande\input{./codigo/#1.tex}}
+}
+\newcommand{\codigopeq}[2]{
+    \vspace{0.2cm}
+    \begin{flushright}
+    \href{run:./codigo/#2}{\includegraphics[height=1cm]{gear_wheels}}
+    \end{flushright}
+    \vspace{-2cm}{\codigoPeq\input{./codigo/#1.tex}}
+}
+\newcommand{\trozocodigo}[1]{
+    \vspace{0.2cm}
+    {\codigoNormal\input{./codigo/#1.tex}}
+  }
+\newcommand{\trozocodigopeq}[1]{
+    \vspace{0.2cm}
+    {\codigoPeq\input{./codigo/#1.tex}}
+}
+\newcommand{\trozocodigazo}[1]{
+    \vspace{0.2cm}
+    {\codigoGrande\input{./codigo/#1.tex}}
+}
+\newcommand{\trocitocodigo}[1]{
+    \vspace{0.2cm}
+    {\tiny\input{./codigo/#1.tex}}
+}
+\newcommand{\trocitocodigazo}[1]{
+    \vspace{0.2cm}
+    {\small\input{./codigo/#1.tex}}
+}
+
+\newcommand{\codeinline}[1]{
+    {{\small\tt #1}}
+}
+
+\AtBeginSection[] % Do nothing for \section*
+{ 
+\begin{frame}<beamer>
+\frametitle{Contenido del tema}
+%{\footnotesize
+  \tableofcontents[currentsection,
+        hideothersubsections]
+%} 
+\end{frame} 
+}
+\title[Fundamentos de Programación]{Fundamentos de Programación}
+\date[]{}
+
+% \defbeamertemplate*{headline}{infolines theme}
+% {
+%   \leavevmode%
+%   \hbox{%
+%     \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.65ex,dp=1.5ex,right]{section in head/foot}%
+%       \usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+%     \end{beamercolorbox}%
+%     \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.65ex,dp=1.5ex,left]{subsection in head/foot}%
+%       \usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsubsectionhead
+%     \end{beamercolorbox}}%
+%   \vskip0pt%
+% }

@@ -1,0 +1,45 @@
+\usepackage[export]{adjustbox}
+% Allow accents
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+% New color to remark
+\usepackage{xcolor}\definecolor{remark}{rgb}{1,0.5,0}
+% The emphasis put in bold and change the color
+\let\oldtextbf\textbf
+\renewcommand{\textbf}[1]{\textcolor{remark}{\oldtextbf{#1}}}
+% Remove section prefix 
+\setbeamercolor{section name}{fg=white}
+% Add minted support
+\usepackage{minted}
+\setminted[cpp]{linenos,fontsize=\scriptsize,framesep=3em}
+\usepackage[absolute,overlay]{textpos}
+\newcommand*\putquestion[4]{  \begin{textblock}{10}(#1,#2) {\only<#3>{{\color{blue}#4}}}\end{textblock} }
+\setminted[shell]{fontsize=\scriptsize}
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \textcolor{blue}{\insertframenumber/\inserttotalframenumber}
+}
+\author[D. Molina y F.J. Rodríguez] {Daniel Molina Cabrera\\
+  (\url{dmolina@decsai.ugr.es})\\
+  Departamento de Ciencias de la Computaci\'on e I.A.}
+\institute[CCIA]
+{
+  \vspace*{-6mm}
+
+  \includegraphics[height=1.5cm]{../figuras/conjunto.jpg}\\
+  % ETSIIT\quad Universidad de Granada\\
+}
+\setbeamersize{text margin left=10cm,text margin right=10cm}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+text width=5em, text badly centered, node distance=7em, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=orange!30, 
+minimum width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=8em,
+minimum height=2em]
+\newenvironment{centerflow}{\begin{center}}{\end{center}}
