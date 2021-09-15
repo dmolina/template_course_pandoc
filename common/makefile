@@ -16,6 +16,4 @@ ${ASIG}_${TEMA}_doc.pdf: ${TEMA}.md
 	mv ${TEMA}_doc.pdf ${ASIG}_${TEMA}_doc.pdf
 
 clean:
-	# latexmk -C ${TEMA}.tex
-  # latexmk -C ${TEMA}_doc.tex
 	rm ${ASIG}_${TEMA}*pdf ${TEMA}*.tex 2>/dev/null
