@@ -19,7 +19,7 @@ input-files: []
 include-before-body: []
 include-after-body: []
 include-in-header: [beamer.tex,head.tex]
-resource-path: [.,../common]
+resource-path: [.,../common,../custom]
 
 # filters will be assumed to be Lua filters if they have
 # the .lua extension, and json filters otherwise.  But

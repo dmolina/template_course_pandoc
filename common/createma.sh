@@ -22,7 +22,7 @@ for file in *minted*; do
     ln -s $PWD/$file $dir/$file
 done
 
-cp -Rf figures $dir
+mkdir $dir/figures
 cd -
 
 # Install packages

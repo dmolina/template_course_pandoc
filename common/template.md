@@ -1,7 +1,6 @@
 ---
-title: Titulo Tema
-subtitle: Asignatura
-date: Universidad de Granada
+title: Course topic
+subtitle: Course
 indented-code-classes: numberLines
 toc:
   - true

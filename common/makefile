@@ -10,10 +10,17 @@ ${ASIG}_${TEMA}.pdf: ${TEMA}.tex
 	latexmk -pdf ${TEMA}.tex >/dev/null 2>&1
 	mv ${TEMA}.pdf ${ASIG}_${TEMA}.pdf
 	latexmk -C ${TEMA}.tex
+	rm ${TEMA}.tex
 
-${ASIG}_${TEMA}_doc.pdf: ${TEMA}.md
-	pandoc -d../common/pdf -o ${TEMA}_doc.pdf ${TEMA}.md
+${TEMA}_doc.tex: ${TEMA}.md
+	pandoc -d../common/pdf -o ${TEMA}_doc.tex ${TEMA}.md
+	sed -i 's/\\author{}//' ${TEMA}_doc.tex
+
+${ASIG}_${TEMA}_doc.pdf: ${TEMA}_doc.tex
+	latexmk -pdf ${TEMA}_doc.tex >/dev/null 2>&1
 	mv ${TEMA}_doc.pdf ${ASIG}_${TEMA}_doc.pdf
+	latexmk -C ${TEMA}_doc.tex
+	rm ${TEMA}_doc.tex
 
 clean:
 	rm ${ASIG}_${TEMA}*pdf ${TEMA}*.tex 2>/dev/null
