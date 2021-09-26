@@ -61,20 +61,43 @@ Example:
 # First slide
 ...
 
+
 # Second slide
+...
+```
+
+## Blocks
+
+There are several ways to include a typical block:
+
+The more direct is using:
+
+```raw
+
+## Title of Block 1
+...
+
+## Title Block 2
 ...
 ```
 
 ## Images
 
-You can create image directly in Markdown. 
+You can create image directly in Markdown, indicating both the caption and 
+the maximum with (or the height), in percentage. 
 
 The syntax is:
 
-- For Figures (with Caption, and numered).
+- For Figures (with Caption, and numbered).
 
 ```raw
 ![Caption](filename){width="...%"}
+```
+
+By example:
+
+```raw
+![Convergence figure](conv_figure.jpg){width="80%"}
 ```
 
 - Without caption:
@@ -83,6 +106,20 @@ The syntax is:
 ![](filename){width="...%"}
 ```
 
-You can add the with
+By example:
+
+```raw
+![](yo_avatar.png){width="20%"}
+```
+
+By default all figures are centered in beamer mode, not in the document version
+(only the figures with caption).
+
+By default it searches the files for the figures in the figures/ directory, If
+it is not found, it searches at the current directory (but it is preferred to
+use the figures/ directory).
 
 ## Notes for the document version
+
+You can add notes only for the document version 
+
